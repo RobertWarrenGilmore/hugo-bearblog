@@ -1,3 +1,11 @@
 {{ range .Site.Menus.main }}
 <a href="{{ .URL }}">{{ .Name }}</a>
 {{ end }}
+<!-- Show a link for each translation of the current page, but fall back to the link for the translation of the home page if this page isn't translated. -->
+{{ $translationLangs := slice ""}}
+{{ range .Translations }}
+  {{ $translationLangs = $translationLangs | append .Lang }}
+{{ end }}
+{{ range (sort (union .Translations (where .Site.Home.Translations "Lang" "not in" $translationLangs))) }}
+  <a href="{{ .Permalink }}" class="{{ cond (in $translationLangs .Lang) "page-translation" "home-translation"}}">{{ .Language.LanguageName }}</a>
+{{ end }}
