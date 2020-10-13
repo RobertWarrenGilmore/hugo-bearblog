@@ -1,0 +1,28 @@
+
+{{ if .IsNamedParams }}
+  <video
+    {{ if eq (.Get "controls") false }}{{ else }}controls{{ end }}
+    {{ if .Get "autoplay"}}autoplay muted="true"{{ end }}
+    src="{{ .Get "src" }}"
+    type="{{ .Get "type" }}">
+    Your browser doesn't support the HTML5 video player, so here's a link to
+    <a href="{{ .Get "src" }}">
+      a video of {{ .Get "alt"}}
+    </a>
+    .
+  </video>
+{{ else }}
+  <video
+    controls
+    src="{{ .Get 0 }}">
+    Your browser doesn't support the HTML5 video player, so here's a link to
+    <a href="{{ .Get "src" }}">
+      {{ if len .Params | eq 2 }}
+        a video of {{ .Get 1 }}
+      {{ else }}
+        the video that would be shown here
+      {{ end }}
+    </a>
+    .
+  </video>
+{{ end }}
