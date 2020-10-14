@@ -74,7 +74,20 @@
   }
 
   table {
-    width: 100%;
+    min-width: 50%;
+    max-width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 0.3em;
+    border-color: #666;
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  th {
+    background-color: #ddd;
   }
 
   img {
@@ -176,6 +189,14 @@
     input {
       background-color: #252525;
       color: #ddd;
+    }
+
+    th, td {
+      border-color: #aaa;
+    }
+
+    th {
+      background-color: #111;
     }
 
     .helptext {
