@@ -6,6 +6,16 @@
 {{ range .Translations }}
   {{ $translationLangs = $translationLangs | append .Lang }}
 {{ end }}
+ {{ $top := $ }}
 {{ range (sort (union .Translations (where .Site.Home.Translations "Lang" "not in" $translationLangs))) }}
-  <a href="{{ .RelPermalink }}" class="{{ cond (in $translationLangs .Lang) "page-translation" "home-translation"}}">{{ .Language.LanguageName }}</a>
+  <a href="{{ .RelPermalink }}"
+    {{ if not (in $translationLangs .Lang) }}
+      title="{{ .Language.Params.pageNotTranslatedGoToHome }}"
+    {{ end }}
+    >
+    {{ .Language.LanguageName }}
+    {{ if not (in $translationLangs .Lang) }}
+      ({{.LinkTitle}})
+    {{ end }}
+  </a>
 {{ end }}

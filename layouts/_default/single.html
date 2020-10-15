@@ -6,8 +6,8 @@
     <time
       datetime='{{ .Date.Format "2006-01-02" }}'
       pubdate
-      title="last modified on {{ .Lastmod.Format "2006-01-02" }}">
-      posted on {{ .Date.Format "2006-01-02" }}
+      title="{{ i18n "lastModifiedOn" }} {{ .Lastmod.Format "2006-01-02" }}">
+      {{ i18n "postedOn" }} {{ .Date.Format "2006-01-02" }}
     </time>
   </i>
 </p>

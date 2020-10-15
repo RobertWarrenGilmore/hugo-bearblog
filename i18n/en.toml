@@ -1,0 +1,18 @@
+[videoPlayerAltTextBeforeLink]
+other = "Your browser doesn't support the HTML5 video player, so here's a link to "
+[videoPlayerLinkAltTextWithParamAlt]
+other = "a video of {{ .paramAltText }}"
+[videoPlayerLinkAltTextWithoutParamAlt]
+other = "the video that would be shown here"
+[videoPlayerAltTextAfterLink]
+other = "."
+[postedOn]
+other = "posted on"
+[lastModifiedOn]
+other = "last modified on"
+[emptyList]
+other = "There is nothing in this list yet."
+[introduceTaxonomyLabel]
+other = "filtered by"
+[removeFilter]
+other = "remove filter"

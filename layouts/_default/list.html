@@ -7,9 +7,9 @@
 
     <!-- Check whether this is a taxonomy page. -->
     {{ if .Data.Singular }}
-    <h3 style="margin-bottom:0">Filtering for "{{ .Title }}"</h3>
+    <h3 style="margin-bottom:0">{{ i18n "introduceTaxonomyLabel" }} "{{ .Title }}"</h3>
     <small>
-      <a href="{{ "/blog" | relURL }}">Remove filter</a>
+      <a href="{{ "/blog" | relURL }}">{{ i18n "removeFilter" }}</a>
     </small>
     {{ end }}
 
@@ -27,7 +27,7 @@
       </li>
       {{ else }}
       <li>
-        No posts yet
+        {{ i18n "emptyList" }}
       </li>
       {{ end }}
     </ul>

@@ -1,0 +1,18 @@
+[videoPlayerAltTextBeforeLink]
+other = "Tu navegador no es compatible con el reproductor de vídeo HTML5, entonces aquí está "
+[videoPlayerLinkAltTextWithParamAlt]
+other = "un enlace a un vídeo de {{ .paramAltText }}"
+[videoPlayerLinkAltTextWithoutParamAlt]
+other = "un enlace al vídeo que estaría aquí"
+[videoPlayerAltTextAfterLink]
+other = "."
+[postedOn]
+other = "publicado"
+[lastModifiedOn]
+other = "última modificación"
+[emptyList]
+other = "Esta lista todavía está vacía."
+[introduceTaxonomyLabel]
+other = "filtrado por"
+[removeFilter]
+other = "quitar el filtro"
