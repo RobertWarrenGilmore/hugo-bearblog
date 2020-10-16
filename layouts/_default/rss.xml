@@ -1,0 +1,90 @@
+{{- $pctx := . -}}
+{{- if .IsHome -}}{{ $pctx = .Site }}{{- end -}}
+{{- $pages := slice -}}
+{{- if or $.IsHome $.IsSection -}}
+{{- $pages = $pctx.RegularPages -}}
+{{- else -}}
+{{- $pages = $pctx.Pages -}}
+{{- end -}}
+{{- $limit := .Site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 1 -}}
+{{- $pages = $pages | first $limit -}}
+{{- end -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    {{ if (and (eq .Title .Site.Title) .Title) }}
+      <title>
+        {{ i18n "rssSectionOnSite" (dict "sectionName" .Title "siteName" .Site.Title)}}
+      </title>
+      <description>
+        {{ i18n "rssRecentContentInSectionOnSite" (dict "sectionName" .Title "siteName" .Site.Title)}}
+      </description>
+    {{ else }}
+      <title>
+        {{ .Site.Title }}
+      </title>
+      <description>
+        {{ i18n "rssRecentContentOnSite" (dict "siteName" .Site.Title)}}
+      </description>
+    {{ end }}
+    <link>{{ .Permalink }}</link>
+    {{ with .Site.Language }}
+      <language>
+        {{.}}
+      </language>
+    {{end}}
+    {{ if .Site.Author }}
+      {{ if .Site.Author.email }}
+        <managingEditor>
+          {{ .Site.Author.email }} ({{ .Site.Author.name }})
+        </managingEditor>
+        <webMaster>
+          {{ .Site.Author.email }} ({{ .Site.Author.name }})
+        </webMaster>
+      {{ else }}
+        <managingEditor>
+          {{ .Site.Author.name }}
+        </managingEditor>
+        <webMaster>
+          {{ .Site.Author.name }}
+        </webMaster>
+      {{ end }}
+    {{end}}
+    {{ with .Site.Copyright }}
+      <copyright>
+        {{.}}
+      </copyright>
+    {{end}}
+    {{ if not .Date.IsZero }}
+      <lastBuildDate>
+        {{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}
+      </lastBuildDate>
+    {{ end }}
+    {{- with .OutputFormats.Get "RSS" -}}
+    {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{- end -}}
+    {{ range $pages }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>
+        {{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}
+      </pubDate>
+      {{ if .Site.Author }}
+        {{ if .Site.Author.email }}
+          <author>
+            {{ .Site.Author.email }} ({{ .Site.Author.name }})
+          </author>
+        {{ else }}
+          <author>
+            {{ .Site.Author.name }}
+          </author>
+        {{ end }}
+      {{end}}
+      <guid>{{ .Permalink }}</guid>
+      <description>{{ .Summary | html }}</description>
+    </item>
+    {{ end }}
+  </channel>
+</rss>

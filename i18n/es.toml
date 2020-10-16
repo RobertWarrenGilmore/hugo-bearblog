@@ -16,3 +16,9 @@ other = "Esta lista todavía está vacía."
 other = "filtrado por"
 [removeFilter]
 other = "quitar el filtro"
+[rssSectionOnSite]
+other = "{{ .sectionName }} en {{ .siteName }}"
+[rssRecentContentInSectionOnSite]
+other = "contenido reciente en {{ .sectionName }} en {{ .siteName }}"
+[rssRecentContentOnSite]
+other = "contenido reciente en {{ .siteName }}"
