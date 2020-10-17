@@ -17,11 +17,13 @@
       {{ range .Pages }}
       <li>
         <span>
-          <i>
-            <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
-              {{ .Date.Format "2006-01-02" }}
-            </time>
-          </i>
+          {{ if not .Date.IsZero }}
+            <i>
+              <time datetime='{{ .Date.Format "2006-01-02" }}' pubdate>
+                {{ .Date.Format "2006-01-02" }}
+              </time>
+            </i>
+          {{ end }}
         </span>
         <a href="{{ .RelPermalink }}">{{ .Title }}</a>
       </li>
