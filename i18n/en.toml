@@ -22,3 +22,5 @@ other = "{{ .sectionName }} on {{ .siteName }}"
 other = "recent content in {{ .sectionName }} on {{ .siteName }}"
 [rssRecentContentOnSite]
 other = "recent content on {{ .siteName }}"
+[404Explanation]
+other = "There's no page here."
