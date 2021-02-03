@@ -12,10 +12,6 @@ other = "posted on"
 other = "last modified on"
 [emptyList]
 other = "There is nothing in this list yet."
-[introduceTaxonomyLabel]
-other = "filtered by"
-[removeFilter]
-other = "remove filter"
 [rssSectionOnSite]
 other = "{{ .sectionName }} on {{ .siteName }}"
 [rssRecentContentInSectionOnSite]

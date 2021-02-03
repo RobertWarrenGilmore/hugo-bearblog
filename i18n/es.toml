@@ -12,10 +12,6 @@ other = "publicado"
 other = "última modificación"
 [emptyList]
 other = "Esta lista todavía está vacía."
-[introduceTaxonomyLabel]
-other = "filtrado por"
-[removeFilter]
-other = "quitar el filtro"
 [rssSectionOnSite]
 other = "{{ .sectionName }} en {{ .siteName }}"
 [rssRecentContentInSectionOnSite]
