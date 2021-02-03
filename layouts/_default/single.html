@@ -1,20 +1,18 @@
 {{ define "main" }}
-  {{ if eq .Type "blog" }}
-    {{ if not .Params.menu }}
-      <h1>{{ .Title }}</h1>
-      {{ if not .Date.IsZero}}
-        <p>
-          <i>
-            <time
-              datetime='{{ .Date.Format "2006-01-02" }}'
-              pubdate
-              title="{{ i18n "lastModifiedOn" }} {{ .Lastmod.Format "2006-01-02" }}">
-              {{ i18n "postedOn" }} {{ .Date.Format "2006-01-02" }}
-            </time>
-          </i>
-        </p>
-      {{ end }}
-    {{ end }}
+  {{ if not .Params.hideHeadingTitle }}
+    <h1>{{ .Title }}</h1>
+  {{ end }}
+  {{ if not .Date.IsZero}}
+    <p>
+      <i>
+        <time
+          datetime='{{ .Date.Format "2006-01-02" }}'
+          pubdate
+          title="{{ i18n "lastModifiedOn" }} {{ .Lastmod.Format "2006-01-02" }}">
+          {{ .Date.Format "2006-01-02" }}
+        </time>
+      </i>
+    </p>
   {{ end }}
   <content>
     {{ .Content }}

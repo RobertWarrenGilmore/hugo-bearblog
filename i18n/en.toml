@@ -6,8 +6,6 @@ other = "a video of {{ .paramAltText }}"
 other = "the video that would be shown here"
 [videoPlayerAltTextAfterLink]
 other = "."
-[postedOn]
-other = "posted on"
 [lastModifiedOn]
 other = "last modified on"
 [emptyList]
