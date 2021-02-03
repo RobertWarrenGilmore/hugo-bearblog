@@ -5,7 +5,7 @@
 
   {{ if not .Params.hideDirectory }}
 
-    <!-- Check whether this is a taxonomy page. -->
+    <!-- Check whether this is a taxonomy term page. -->
     {{ if .Data.Singular }}
     <h3 style="margin-bottom:0">{{ i18n "introduceTaxonomyLabel" }} "{{ .Title }}"</h3>
     <small>
@@ -34,7 +34,7 @@
       {{ end }}
     </ul>
 
-    <!-- Check whether this is a taxonomy page. -->
+    <!-- Check whether this is a taxonomy term page. -->
     {{ if .Data.Singular }}
     {{else}}
       <small>
